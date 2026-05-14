@@ -1,1 +1,1644 @@
-sadassadad
+Crea un archivo Less donde definan variables para colores primarios, secundarios y fuentes. Luego, define un mixin para aplicar bordes redondeados y sombra a los elemntos
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Less: Variables y Mixins</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: start;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="button">Click Me</button>
+        <div class="alert-box">!Este es un mensaje de alerta!</div>
+
+    </div>
+
+
+</body>
+</html>
+
+// 1. Definición de Variables
+@primary-color: #3498db;
+@secondary-color: #2ec071;
+@alert-color: #e74c3c;
+@font-family: 'Arial', sans-serif;
+@font-size: 16px;
+
+// 2. Definición de Mixins
+
+.bordered-radius(@radius: 5px) {
+    border-radius: @radius;
+}
+
+
+.box-shadow(@x: 0px, @y: 2px, @blur: 10px, @color: rgba(0, 0, 0, 0.15)) {
+    box-shadow: @x @y @blur @color;
+}
+
+// 3. Estilizar Botón y Alerta utilizando Mixins y Variables
+.button {
+    background-color: @primary-color;
+    color: white;
+    font-family: @font-family;
+    font-size: @font-size;
+    padding: 10px 20px;
+    cursor: pointer;
+    .bordered-radius(8px); 
+    .box-shadow(0px, 4px, 8px, rgba(0, 0, 0, 0.2)); 
+
+    &:hover {
+        background-color: darken(@primary-color, 10%);
+    }
+}
+
+.alert-box {
+    background-color: @alert-color;
+    color: white;
+    font-family: @font-family;
+    font-size: @font-size;
+    padding: 15px;
+    .bordered-radius(); 
+    .box-shadow(); 
+}
+
+Diseña un formulario de inicio de sesion con campos de entrada y botones estilizados utilizando nesting para la jerarquia de estilos
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Less: Nesting y Jerarquías</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #eef;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <form class="form-login">
+        <input type="text" placeholder="Usuario" required>
+        <input type="password" placeholder="Contraseña" required>
+        <button type="submit" class="submit-btn">Iniciar Sesión</button>
+    </form>
+</body>
+</html>
+
+// Estilos generales del formulario
+.form-login {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+}
+
+// Estilos para los campos de entrada
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+
+    &:focus {
+        border-color: #3498db;
+        outline: none;
+    }
+}
+
+// Estilo para el botón de envío
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: darken(#3498db, 10%);
+    }
+}
+
+
+Crea un diseño de tarjeta(card) donde el color de fondo y el texto varien en funcion de la interaccion del usuario
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Less: Operaciones y Funciones de Color</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #eef;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="product-card">
+        <h2 class="product-title">Producto Destacado</h2>
+        <p class="product-description">Este es un breve descripción del producto. Excelente calidad y precio.</p>
+        <button class="product-button">Comprar Ahora</button>
+    </div>
+</body>
+</html>
+
+// Variables de colores y tamaños
+@primary-color: #1abc9c;
+@text-color: #ffffff;
+@padding-base: 20px;
+@margin-base: 10px;
+
+// Estilos para la tarjeta
+.product-card {
+    width: 300px;
+    padding: @padding-base;
+    margin: @margin-base * 2;
+    background-color: @primary-color;
+    color: @text-color;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+
+    // Aplicar funciones de color en hover
+    &:hover {
+        background-color: darken(@primary-color, 10%);
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    }
+}
+
+// Botón de la tarjeta
+.product-button {
+    padding: @padding-base / 2;
+    background-color: lighten(@primary-color, 20%);
+    border: none;
+    color: @text-color;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: lighten(@primary-color, 10%);
+    }
+}
+
+Crea un sistema de botones que cambie de estilo basado en el tipo de boton primary secondary danger con guard selectors
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Less: Guard Selectors</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            gap: 10px;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <button class="button primary">Primary Button</button>
+    <button class="button secondary">Secondary Button</button>
+    <button class="button danger">Danger Button</button>
+</body>
+</html>
+
+// Variables de color
+@primary-color: #3498db;
+@secondary-color: #2ecc71;
+@danger-color: #e74c3c;
+@text-color: #ffffff;
+
+// Mixin para estilos de botón base
+.button-base() {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    color: @text-color;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+// Mixin con guard selectors para aplicar estilos condicionales
+.button-variant(@type) when (@type = primary) {
+    background-color: @primary-color;
+
+    &:hover {
+        background-color: darken(@primary-color, 10%);
+    }
+}
+
+.button-variant(@type) when (@type = danger) {
+    background-color: @danger-color;
+
+    &:hover {
+        background-color: darken(@danger-color, 10%);
+    }
+}
+
+.button-variant(@type) when (@type = primary) {
+    background-color: @primary-color;
+
+    &:hover {
+        background-color: darken(@primary-color, 10%);
+    }
+}
+
+.button-variant(@type) when (@type = secondary) {
+    background-color: @secondary-color;
+
+    &:hover {
+        background-color: darken(@secondary-color, 10%);
+    }
+}
+
+// Aplicación de mixins para cada botón
+.button {
+    .button-base(); // Aplicar estilos base
+
+    &.primary {
+        .button-variant(primary);
+    }
+
+    &.secondary {
+        .button-variant(secondary);
+    }
+
+    &.danger {
+        .button-variant(danger);
+    }
+}
+
+Divide los estilos de un sitio web simple en diferentes archivos Less variables mixins header footer luego utiliza import
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Less: Importación y Modularización</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header-title">Mi Encabezado</h1>
+    </header>
+    <footer class="footer">
+        <p class="footer-text">Este es el pie de página</p>
+    </footer>
+</body>
+</html>
+
+// Variables de colores y fuentes
+@primary-color: #2980b9;
+@secondary-color: #2ecc71;
+@text-color: #333;
+@font-family: 'Arial', sans-serif;
+
+
+// Mixin para bordes redondeados
+.bordered-radius(@radius: 5px) {
+    border-radius: @radius;
+}
+
+// Mixin para sombras
+.box-shadow(@x: 0px, @y: 2px, @blur: 10px, @color: rgba(0, 0, 0, 0.15)) {
+    box-shadow: @x @y @blur @color;
+}
+
+// Estilos para el header
+.header {
+    background-color: @primary-color;
+    color: @text-color;
+    padding: 20px;
+    .bordered-radius(); // Usar mixin de bordes redondeados
+}
+
+.header-title {
+    font-size: 24px;
+    font-family: @font-family;
+}
+
+// Estilos para el footer
+.footer {
+    background-color: @secondary-color;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.footer-text {
+    font-size: 14px;
+    font-family: @font-family;
+}
+
+// Archivo principal que importa todos los módulos
+@import "variables.less";
+@import "mixins.less";
+@import "header.less";
+@import "footer.less";
+
+Extender classes con :extend
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Less: Extender Clases</title>
+    <link rel="stylesheet" href="css/styles.css"> <!-- El archivo CSS compilado de Less -->
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="product-card">
+        <h2 class="product-title">Producto Regular</h2>
+        <p class="product-description">Descripción del producto regular.</p>
+    </div>
+
+    <div class="product-card-highlight">
+        <h2 class="product-title">Producto Destacado</h2>
+        <p class="product-description">Descripción del producto destacado con características especiales.</p>
+    </div>
+</body>
+</html>
+
+
+// Variables para colores y fuentes
+@card-background: #ecfe01;
+@highlight-color: #e74c3c;
+@font-family: 'Arial', sans-serif;
+
+// Clase base con estilos compartidos
+.product-card-base {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: @card-background;
+  font-family: @font-family;
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Estilos para la tarjeta de producto normal
+.product-card {
+  &:extend(.product-card-base);
+
+  .product-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .product-description {
+    font-size: 14px;
+    color: #555;
+  }
+}
+
+// Estilos para la tarjeta de producto destacado
+.product-card-highlight {
+  &:extend(.product-card-base);
+  border-color: @highlight-color;
+  background-color: lighten(@highlight-color, 40%);
+
+  .product-title {
+    color: @highlight-color;
+  }
+}
+
+EJERCICIO PERFIL
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Less - Perfil de Usuario</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="profile-header">
+            <h1 class="profile-title">Mi Perfil</h1>
+        </header>
+
+        <div class="profile-card">
+            <div class="profile-image" ><img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt=""></div>
+            
+            <h2 class="profile-name">Jean Escudero</h2>
+            
+            <p class="profile-bio">
+                Desarrollador web apasionado por el diseño y la tecnología. 
+                Me encanta aprender nuevas herramientas y crear diseños webs atractivos.
+            </p>
+            
+            <button class="edit-btn">Editar Perfil</button>
+        </div>
+    </div>
+</body>
+</html>
+
+// 1. Variables
+@primary-color: #3498db;
+@secondary-color: #2ecc71;
+@alert-color: #e74c3c;
+@text-color: #333;
+@text-light: #777;
+@bg-color: #f4f4f4;
+@white: #ffffff;
+@font-family: 'Arial', sans-serif;
+@font-size-base: 16px;
+
+// 2. Mixins
+// Mixin para bordes redondeados
+.bordered-radius(@radius: 10px) {
+    border-radius: @radius;
+}
+
+// Mixin para sombras
+.box-shadow(@x: 0px, @y: 4px, @blur: 10px, @color: rgba(0, 0, 0, 0.1)) {
+    box-shadow: @x @y @blur @color;
+}
+
+// 3. Clase base para extend
+.card-base {
+    background-color: @white;
+    padding: 20px;
+    .bordered-radius(12px);
+    .box-shadow();
+}
+
+// 4. Encabezado
+.profile-header {
+    &:extend(.card-base);
+    background-color: @primary-color;
+    color: @white;
+    text-align: center;
+    margin-bottom: 30px;
+
+    .profile-title {
+        font-family: @font-family;
+        font-size: 28px;
+        margin: 0;
+    }
+}
+
+// 5.Tarjeta de Perfil
+.profile-card {
+    &:extend(.card-base);
+    text-align: center;
+    max-width: 350px;
+    margin: 0 auto;
+
+    .profile-image {
+        width: 120px;
+        height: 120px;
+        .bordered-radius(50%);
+        object-fit: cover;
+        border: 3px solid @primary-color;
+        margin-bottom: 15px;
+
+        margin-left: auto;
+        margin-right: auto;
+        overflow: hidden; 
+        
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block; 
+        }
+    }
+
+    .profile-name {
+        font-family: @font-family;
+        font-size: 24px;
+        color: @primary-color;
+        margin: 10px 0;
+    }
+
+    .profile-bio {
+        font-family: @font-family;
+        font-size: 14px;
+        color: @text-light;
+        margin-bottom: 20px;
+        line-height: 1.5;
+    }
+}
+
+
+// 6.Boton de edicion
+// Mixin base del botón
+.button-base() {
+    padding: 10px 25px;
+    border: none;
+    .bordered-radius(25px);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: @font-family;
+}
+
+// Guard selectors para variantes de botón
+.button-variant(@type) when (@type = edit) {
+    background-color: @primary-color;
+    color: @white;
+
+    &:hover {
+        background-color: darken(@primary-color, 15%);
+        transform: scale(1.05);
+    }
+}
+
+.button-variant(@type) when (@type = cancel) {
+    background-color: @alert-color;
+    color: @white;
+
+    &:hover {
+        background-color: darken(@alert-color, 15%);
+    }
+}
+
+// Aplicación del botón
+.edit-btn {
+    .button-base();
+    .button-variant(edit);
+}
+
+// 7. Estilos generales
+body {
+    font-family: @font-family;
+    background-color: @bg-color;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 500px;
+    width: 100%;
+}
+
+EJERCICIO DASHOBORAD
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Tarjetas de Estadísticas</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Encabezado del Dashboard -->
+        <header class="dashboard-header">
+            <h1 class="dashboard-title">Dashboard Analitico</h1>
+            <p class="dashboard-subtitle">Resumen de estadísticas del mes actual</p>
+        </header>
+
+        <!-- Grid de Tarjetas -->
+        <div class="stats-grid">
+            <!-- Tarjeta Primary - Usuarios -->
+            <div class="stat-card primary">
+                <div class="card-icon">👥</div>
+                <div class="card-value">12.5K</div>
+                <div class="card-label">Usuarios Totales</div>
+                <div class="card-trend trend-up">12% vs mes anterior</div>
+            </div>
+
+            <!-- Tarjeta Secondary - Ventas -->
+            <div class="stat-card secondary">
+                <div class="card-icon">💰</div>
+                <div class="card-value">S/48.2K</div>
+                <div class="card-label">Ingresos</div>
+                <div class="card-trend trend-up">8% vs mes anterior</div>
+            </div>
+
+            <!-- Tarjeta Warning - Pedidos -->
+            <div class="stat-card warning">
+                <div class="card-icon">📦</div>
+                <div class="card-value">3,245</div>
+                <div class="card-label">Pedidos</div>
+                <div class="card-trend trend-up">5% vs mes anterior</div>
+            </div>
+
+            <!-- Tarjeta Danger - Rechazos -->
+            <div class="stat-card danger">
+                <div class="card-icon">⚠️</div>
+                <div class="card-value">124</div>
+                <div class="card-label">Rechazos</div>
+                <div class="card-trend trend-down">3% vs mes anterior</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+// 1. Variables
+@primary-color: #3498db;
+@secondary-color: #2ecc71;
+@danger-color: #e74c3c;
+@warning-color: #f39c12;
+@text-dark: #2c3e50;
+@text-light: #7f8c8d;
+@bg-dashboard: #ecf0f1;
+@white: #ffffff;
+@font-family: 'Arial', sans-serif;
+@base-padding: 20px;
+@base-margin: 15px;
+@card-radius: 12px;
+
+// 2. Mixins
+// Mixin para bordes redondeados
+.bordered-radius(@radius: @card-radius) {
+    border-radius: @radius;
+}
+
+// Mixin para sombras
+.box-shadow(@x: 0px, @y: 4px, @blur: 12px, @color: rgba(0, 0, 0, 0.1)) {
+    box-shadow: @x @y @blur @color;
+}
+
+// Mixin base para tarjetas
+.card-base() {
+    background-color: @white;
+    padding: @base-padding;
+    .bordered-radius();
+    .box-shadow();
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+    }
+}
+
+// 3. Guard para tarjetas
+.card-variant(@type) when (@type = primary) {
+    border-left: 4px solid @primary-color;
+    
+    .card-icon {
+        color: @primary-color;
+    }
+    
+    .card-value {
+        color: @primary-color;
+    }
+}
+
+.card-variant(@type) when (@type = secondary) {
+    border-left: 4px solid @secondary-color;
+    
+    .card-icon {
+        color: @secondary-color;
+    }
+    
+    .card-value {
+        color: @secondary-color;
+    }
+}
+
+.card-variant(@type) when (@type = danger) {
+    border-left: 4px solid @danger-color;
+    
+    .card-icon {
+        color: @danger-color;
+    }
+    
+    .card-value {
+        color: @danger-color;
+    }
+}
+
+.card-variant(@type) when (@type = warning) {
+    border-left: 4px solid @warning-color;
+    
+    .card-icon {
+        color: @warning-color;
+    }
+    
+    .card-value {
+        color: @warning-color;
+    }
+}
+
+// 4. Estilos para dashborad
+.dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: @base-padding;
+    font-family: @font-family;
+}
+
+// Encabezado del Dashboard
+.dashboard-header {
+    text-align: center;
+    margin-bottom: @base-margin * 2;
+    padding-bottom: @base-padding;
+    border-bottom: 2px solid @primary-color;
+
+    .dashboard-title {
+        font-size: 32px;
+        color: @text-dark;
+        margin: 0 0 10px 0;
+        
+        &::before {
+            content: "📊 ";
+        }
+    }
+
+    .dashboard-subtitle {
+        font-size: 14px;
+        color: @text-light;
+        margin: 0;
+    }
+}
+
+// Grid de tarjetas
+.stats-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: @base-margin * 1.5;
+    justify-content: center;
+}
+
+// Tarjeta de estadísticas (clase base)
+.stat-card {
+    .card-base();
+    width: 250px;
+    text-align: center;
+    transition: all 0.3s ease;
+
+    // Nesting de elementos internos
+    .card-icon {
+        font-size: 48px;
+        margin-bottom: @base-margin;
+        display: inline-block;
+    }
+
+    .card-value {
+        font-size: 36px;
+        font-weight: bold;
+        margin: @base-margin 0;
+    }
+
+    .card-label {
+        font-size: 14px;
+        color: @text-light;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin: 0;
+    }
+
+    .card-trend {
+        font-size: 12px;
+        margin-top: @base-margin;
+        padding-top: @base-margin / 2;
+        border-top: 1px solid #eee;
+        
+        &.trend-up {
+            color: @secondary-color;
+            
+            &::before {
+                content: "▲ ";
+            }
+        }
+        
+        &.trend-down {
+            color: @danger-color;
+            
+            &::before {
+                content: "▼ ";
+            }
+        }
+    }
+}
+
+// Aplicación de variantes a las tarjetas
+.stat-card {
+    &.primary {
+        .card-variant(primary);
+    }
+    
+    &.secondary {
+        .card-variant(secondary);
+    }
+    
+    &.danger {
+        .card-variant(danger);
+    }
+    
+    &.warning {
+        .card-variant(warning);
+    }
+}
+
+// 5. Estilos generales
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: @bg-dashboard;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+Crea un botón estilizado aplicando las siguientes variables obligatorias:
+
+Color primario: @primary / #primary = rojo (#E60012)
+
+Color secundario: @secondary / #secondary = negro (#000000)
+
+Fuente principal: @font / $font = Arial
+
+Debes usar un mixin que aplique bordes redondeados y sombra.
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 - Botón con Variables y Mixins</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f0f0;">
+        <button class="btn">Haz clic aquí</button>
+    </div>
+</body>
+</html>
+
+// 1. VARIABLES
+@primary: #E60012;   // Rojo
+@secondary: #000000; // Negro
+@font: Arial;
+
+// 2. MIXIN con bordes redondeados y sombra
+.button-styles() {
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+// 3. ESTILO DEL BOTÓN
+.btn {
+    background-color: @primary;
+    color: white;
+    font-family: @font;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    .button-styles(); // Aplicar mixin
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: @secondary;
+    }
+}
+
+Ejercicio 2: Nesting (Anidación)
+Diseña un formulario de inicio de sesión con los campos:
+
+Usuario
+
+Contraseña
+
+Botón de enviar
+
+Usa nesting para organizar los estilos de los campos en sus estados hover y focus.
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2 - Formulario con Nesting</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #eef;">
+    <form class="login-form">
+        <input type="text" placeholder="Usuario" class="login-input">
+        <input type="password" placeholder="Contraseña" class="login-input">
+        <button type="submit" class="login-btn">Enviar</button>
+    </form>
+</body>
+</html>
+
+// VARIABLES
+@hover: #808080; // Gris
+
+// ESTILOS DEL FORMULARIO CON NESTING
+.login-form {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .login-input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        transition: all 0.3s;
+
+        &:focus {
+            border-color: @hover;
+            outline: none;
+            box-shadow: 0 0 5px @hover;
+        }
+    }
+
+    .login-btn {
+        background-color: black;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: @hover;
+        }
+    }
+}
+
+Ejercicio 3: Funciones y Operaciones de Color
+Crea una tarjeta de perfil de usuario con:
+
+Imagen
+
+Nombre
+
+Descripción
+
+Utiliza funciones de color (darken, lighten) aplicadas a la variable primaria (#E60012).
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3 - Tarjeta de Perfil</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #fafafa;">
+    <div class="profile-card">
+        <img src="https://via.placeholder.com/100" alt="Foto de perfil" class="profile-img">
+        <h2 class="profile-name">Laura Méndez</h2>
+        <p class="profile-desc">Diseñadora apasionada por el desarrollo frontend.</p>
+    </div>
+</body>
+</html>
+
+// VARIABLE PRIMARIA
+@primary: #E60012; // Rojo
+
+// OPERACIONES y FUNCIONES DE COLOR
+.profile-card {
+    background-color: lighten(@primary, 45%); // Color más claro
+    padding: 30px * 0.8;  // Operación: 24px
+    margin: 20px * 1.5;    // Operación: 30px
+    border-radius: 15px;
+    text-align: center;
+    width: 260px;
+    transition: all 0.3s;
+
+    .profile-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 15px;
+    }
+
+    .profile-name {
+        color: @primary;
+        margin-bottom: 10px;
+    }
+
+    .profile-desc {
+        font-size: 14px;
+        color: #555;
+    }
+
+    &:hover {
+        background-color: darken(@primary, 10%); // Rojo más oscuro
+        padding: 30px;  // Aumenta padding al hacer hover
+        margin: 20px;
+        transform: scale(1.02);
+    }
+}
+
+Ejercicio 4: Guard Selectors y Modularización
+Implementa un sistema de botones con tres variantes:
+
+primary
+
+secondary
+
+danger
+
+Usa guard selectors para diferenciarlos según la clase.
+
+Organización del código: al menos cuatro archivos:
+
+variables
+
+mixins
+
+header
+
+footer
+
+Variables obligatorias:
+
+@danger / $danger = #FF0000
+
+@secondary / $secondary = #000000
+
+variables.less
+@danger: #FF0000;
+@secondary: #000000;
+@primary: #E60012;
+@white: #ffffff;
+
+mixins.less
+.button-base() {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+header.less
+.main-header {
+    background-color: @secondary;
+    color: @white;
+    text-align: center;
+    padding: 20px;
+    font-family: Arial;
+}
+
+footer.less
+
+.main-footer {
+    background-color: @secondary;
+    color: @white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 30px;
+    font-size: 12px;
+}
+
+styles.less
+// IMPORTAR MÓDULOS
+@import "variables.less";
+@import "mixins.less";
+@import "header.less";
+@import "footer.less";
+
+// GUARD SELECTORS para botones
+.button-variant(@type) when (@type = primary) {
+    background-color: @primary;
+    &:hover { background-color: darken(@primary, 10%); }
+}
+
+.button-variant(@type) when (@type = secondary) {
+    background-color: @secondary;
+    &:hover { background-color: lighten(@secondary, 20%); }
+}
+
+.button-variant(@type) when (@type = danger) {
+    background-color: @danger;
+    &:hover { background-color: darken(@danger, 10%); }
+}
+
+// CLASE BASE
+.btn {
+    .button-base();
+}
+
+// APLICAR VARIANTES
+.btn-primary {
+    .btn();
+    .button-variant(primary);
+}
+
+.btn-secondary {
+    .btn();
+    .button-variant(secondary);
+}
+
+.btn-danger {
+    .btn();
+    .button-variant(danger);
+}
+
+// ESTILOS GLOBALES
+body {
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+}
+
+.container {
+    text-align: center;
+    margin: 40px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 4 - Guard Selectors y Modularización</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <h1>Sistema de Botones</h1>
+    </header>
+
+    <div class="container">
+        <button class="btn-primary">Primary</button>
+        <button class="btn-secondary">Secondary</button>
+        <button class="btn-danger">Danger</button>
+    </div>
+
+    <footer class="main-footer">
+        <p>Dashboard - Ejercicio 4</p>
+    </footer>
+</body>
+</html>
+
+SASS
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sass - Bloque de Notificaciones</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="notifications-container">
+        <h1>Notificaciones</h1>
+        
+        <!-- Notificación de Éxito -->
+        <div class="notification notification--success">
+            <span class="notification__icon">✅</span>
+            <p class="notification__text">¡Operación completada con éxito!</p>
+        </div>
+
+        <!-- Notificación de Advertencia -->
+        <div class="notification notification--warning">
+            <span class="notification__icon">⚠️</span>
+            <p class="notification__text">Advertencia: Revisa tu conexión a internet.</p>
+        </div>
+
+        <!-- Notificación de Error -->
+        <div class="notification notification--error">
+            <span class="notification__icon">❌</span>
+            <p class="notification__text">Error: No se pudo guardar los cambios.</p>
+        </div>
+    </div>
+</body>
+</html>
+
+// ============================================
+// 1. VARIABLES
+// ============================================
+// Colores
+$color-success: #2ecc71;  // Verde éxito
+$color-warning: #f1c40f;  // Amarillo advertencia
+$color-error: #e74c3c;    // Rojo error
+
+// Tipografía
+$font-family: 'Arial', sans-serif;
+$font-size-base: 14px;
+$font-size-title: 24px;
+
+// Márgenes y tamaños
+$margin-bottom: 15px;
+$padding-notification: 15px;
+$border-radius: 10px;
+$icon-size: 24px;
+
+// ============================================
+// 2. MIXIN para notificaciones
+// ============================================
+@mixin notification-styles($bg-color, $border-color) {
+    background-color: $bg-color;
+    border-left: 5px solid $border-color;
+    border-radius: $border-radius;
+    padding: $padding-notification;
+    margin-bottom: $margin-bottom;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.4s ease-out;
+}
+
+// ============================================
+// 3. ANIMACIÓN
+// ============================================
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+// ============================================
+// 4. ESTILOS PRINCIPALES (con anidación)
+// ============================================
+body {
+    font-family: $font-family;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.notifications-container {
+    max-width: 500px;
+    width: 100%;
+    
+    h1 {
+        font-size: $font-size-title;
+        color: #333;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+}
+
+// Clase base de notificación con anidación
+.notification {
+    // Anidación del icono
+    &__icon {
+        font-size: $icon-size;
+        flex-shrink: 0;
+    }
+    
+    // Anidación del texto
+    &__text {
+        font-size: $font-size-base;
+        margin: 0;
+        flex: 1;
+        color: #333;
+    }
+    
+    // Variantes usando el mixin
+    &--success {
+        @include notification-styles(#d5f5e3, $color-success);
+    }
+    
+    &--warning {
+        @include notification-styles(#fef9e7, $color-warning);
+    }
+    
+    &--error {
+        @include notification-styles(#fadbd8, $color-error);
+    }
+}
+
+LESS
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Less - Construir una Casita</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="house">
+            <!-- Techo -->
+            <div class="house__roof"></div>
+            
+            <!-- Paredes -->
+            <div class="house__walls">
+                <!-- Ventana izquierda -->
+                <div class="house__window house__window--left"></div>
+                <!-- Ventana derecha -->
+                <div class="house__window house__window--right"></div>
+                <!-- Puerta -->
+                <div class="house__door"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+// ============================================
+// 1. VARIABLES DE COLORES
+// ============================================
+@wall-color: #f5deb3;      // Color de paredes (beige)
+@roof-color: #8b4513;      // Color del techo (marrón)
+@door-color: #6b3e1b;      // Color de la puerta (marrón oscuro)
+@window-color: #87ceeb;    // Color de ventanas (celeste)
+@window-frame: #ffffff;    // Marco de ventana (blanco)
+@door-knob: #ffd700;       // Pomo de la puerta (dorado)
+
+// ============================================
+// 2. VARIABLES DE TAMAÑOS
+// ============================================
+@house-width: 300px;
+@house-height: 250px;
+@roof-height: 120px;
+@window-size: 50px;
+@door-width: 60px;
+@door-height: 90px;
+
+// ============================================
+// 3. MIXIN para ventanas
+// ============================================
+.window-styles() {
+    width: @window-size;
+    height: @window-size;
+    background-color: @window-color;
+    border: 4px solid @window-frame;
+    border-radius: 5px;
+    position: absolute;
+    top: 30px;
+    
+    // Cruz de la ventana (vidrios)
+    &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: @window-frame;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+    }
+    
+    &::after {
+        content: '';
+        position: absolute;
+        width: 2px;
+        height: 100%;
+        background-color: @window-frame;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+    }
+}
+
+// ============================================
+// 4. ESTILOS PRINCIPALES (con anidación)
+// ============================================
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #87ceeb 0%, #98d8c8 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// CLASE PRINCIPAL DE LA CASA
+.house {
+    position: relative;
+    width: @house-width;
+    
+    // ============================================
+    // TECHO
+    // ============================================
+    &__roof {
+        width: 0;
+        height: 0;
+        border-left: (@house-width / 2) solid transparent;
+        border-right: (@house-width / 2) solid transparent;
+        border-bottom: @roof-height solid @roof-color;
+        position: relative;
+        z-index: 1;
+        
+        // Chimenea opcional (detalle extra)
+        &::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 50px;
+            background-color: #a0522d;
+            bottom: -10px;
+            right: -40px;
+        }
+    }
+    
+    // ============================================
+    // PAREDES
+    // ============================================
+    &__walls {
+        position: relative;
+        width: @house-width;
+        height: @house-height;
+        background-color: @wall-color;
+        border: 2px solid #8b7355;
+        margin-top: -2px;
+        
+        // ========================================
+        // VENTANAS (usando el mixin)
+        // ========================================
+        &__window {
+            .window-styles();
+            
+            // Ventana izquierda
+            &--left {
+                left: 30px;
+            }
+            
+            // Ventana derecha
+            &--right {
+                right: 30px;
+            }
+        }
+        
+        // ========================================
+        // PUERTA
+        // ========================================
+        &__door {
+            width: @door-width;
+            height: @door-height;
+            background-color: @door-color;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px 5px 0 0;
+            border: 2px solid #4a2a0e;
+            
+            // Pomo de la puerta
+            &::before {
+                content: '';
+                position: absolute;
+                width: 8px;
+                height: 8px;
+                background-color: @door-knob;
+                border-radius: 50%;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+}
+
+ESTO ES SCSS
+
+_mixins.scss
+
+@mixin center-text{
+    text-align: center;
+}
+
+_variables.scss
+
+$primary-color: #2BA47D;
+$bg-color: #f0f0f0;
+//ESTO ES SASS
+//Diferencias entre sass y less
+//Con sass la declaracion de variables es con el sgino de $ $primary-color con less es @
+//Teienes que poner mixin para idntificar la funcionalidad con less solo con poner el punto ya definie que es una caracteristica
+
+main.scss
+
+@use 'variables'; //actualizar use en ves de import
+@use 'mixins';
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: variables.$bg-color; //actualizar variables
+    margin: 0;
+    padding: 20px;
+}
+
+h1{
+    @include mixins.center-text; //actualizar variables
+    color: variables.$primary-color;
+}
+
+
+index
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo SCSS</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    
+    <h1>Hola, Mundo SCSS!</h1>
+
+</body>
+</html>
