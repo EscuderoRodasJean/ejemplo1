@@ -1,0 +1,75 @@
+/*
+1. El patrón Singleton, crea una clase que tenga una única instancia y
+proporcione un punto de acceso global
+Ventajas: solo se inicializa la primera vez que se lo
+solicita, Acceso global a la instancia del objeto
+Desventajas: complicado de usar en un entorno de
+múltiples subprocesos, viola la idea de responsabilidad única
+
+2. El patrón Prototype se usa para crear nuevos objetos copiando una instancia existente
+permite clonar objetos ya existentes, en vez de crear otros desde cero.
+En java se implementa usando: la interfaz clonable, el metodo clone
+
+3. El patrón Factory Method define una interfaz para crear un objeto, pero deja que las subclases decidan que clase instanciar, en vez de usar new usamos el metodo fabrica que encapsula la creacion
+
+4. El patrón Abstract Factory proporciona una  interfaz para crear familias de objetos relacionados o dependientes sin especificar sus clases concretas
+
+5. El patrón Builder se utiliza para construir objetos complejos con multiple atributos. Es útil cuando un objeto tiene muchas opciones de configuración Se puede personalizar cada paso del
+proceso de construcción mejorando la legibilidad y mantenibilidad del código
+
+Si solo quieres crear empleados según el área, usa Factory Method.
+Si necesitas varias familias de empleados con lógica distinta por área, usa Abstract Factory.
+Si quieres crear empleados de manera flexible paso a paso, usa Builder.
+
+6. El Patron Adapter permite que dos clases con interfaces incompatibles trabajen juntas.
+funciona como un “traductor” entre clases. Adadptador de enchufe
+
+7. El Patron Facade es un patrón que simplifica el uso de un sistema complejo proporcionando una interfaz única y fácil de usar. La fachada centraliza las operaciones más comunes en una sola interfaz. Control remoto
+
+8. El Patrón Decorator nos permite extender funcionalidades dinámicamente sin modificar
+clases existentes
+Ventajas:
+Evita herencias innecesarias.
+Permite extender funcionalidad dinámicamente.
+Desventajas:
+Puede generar muchas clases decoradoras.
+La depuración puede ser más compleja.
+Decorator: Permite agregar funcionalidades adicionales a
+un objeto de manera dinámica y flexible, sin alterar su
+estructura original. Ideal para extender capacidades de un
+objeto de forma modular.
+
+Tienes un café .
+Le puedes agregar leche, luego azúcar, después canela.
+Sigue siendo café, pero cada capa (decorador) le da algo extra.
+En software:
+Tienes un objeto que hace algo (ejemplo: enviar un email).
+Le agregas un decorador para que también envíe un SMS.
+Otro decorador podría guardar el mensaje en un archivo.
+El objeto original no se modifica, solo está “decorado”.
+En pocas palabras: El Decorator es como agregar superpoderes a un
+objeto, uno encima del otro, sin tocar su código.
+
+
+9. El Patrón Composite nos ayuda a trabajar con estructuras en forma de árbol, donde
+tratamos objetos individuales y colecciones de manera uniforme.
+
+Ejemplo de la vida real:
+Una caja de juguetes.
+Dentro puede haber un juguete suelto (objeto simple) o otra caja con más juguetes
+(compuesto).
+No importa si agarras una caja o un juguete suelto, ¡siempre lo tratas igual!
+En software:
+Un Empleado puede ser una persona (desarrollador, gerente).
+Pero también puede ser un Departamento, que contiene varios empleados.
+Da igual si consultas a un empleado o a un departamento, siempre usas el mismo método
+mostrarDetalles().
+En pocas palabras: El Composite es como manejar objetos individuales y grupos de
+objetos de la misma manera.
+
+Composite: Facilita el manejo de estructuras jerárquicas
+de objetos, tratando objetos individuales y grupos de
+objetos de manera uniforme. Ideal para representar y
+manipular composiciones de objetos en estructuras
+complejas
+*/
